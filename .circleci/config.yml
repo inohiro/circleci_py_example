@@ -1,9 +1,5 @@
 version: 2.1
 
-orbs:
-  # welcome: circleci/welcome-orb@0.4.1
-  flake8: arrai/flake8@6.0.0
-
 jobs:    
   syntax_check:
     docker:
@@ -11,10 +7,8 @@ jobs:
     working_directory: ~/workspace
     steps:
       - checkout
-      - flake8/setup_flake8:
-          wd: ~/workspace
-      - flake8/flake8_errors:
-          wd: ~/workspace/src
+      - run: pip install -r requirements.txt
+      - run: flake8 --select E999 src/*.py
 
 workflows:
   version: 2
