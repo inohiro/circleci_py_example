@@ -1,1 +1,1 @@
-syntax error
+print("syntax error")
